@@ -1292,6 +1292,21 @@ void loop() {
 
 
 
+
+  if (digitalRead(BUT2)==HIGH && digitalRead(BUT1)==HIGH && modestatus == 1 ){  // BOth buttons pressed we change the year
+    // we check if alarm is on if so we remove it, it not, we activate it.
+ 
+    year = year +1;
+      if (year > 30){ year = 1;
+      }
+    
+     adjustDate(hour, minute, date, month, year);
+     // and write to RTC      
+     adjustRTC(hour, minute, date, month, year);
+       
+     
+    }
+
    // update date days
    if (digitalRead(BUT2)==HIGH && modestatus == 3 ){  // S2 button pressed change mode status
     // we add hour +1 and refresh the display blue
@@ -1346,7 +1361,7 @@ void loop() {
 
 
  // Activate or deactivate ALARM with BUT2 and BUT1 pressed at the same time from modestatus = 0 / We also remove the bell
-   if (digitalRead(BUT2)==HIGH &&digitalRead(BUT2)==HIGH && modestatus == 0 ){  // BOth buttons pressed change alarm status
+   if (digitalRead(BUT2)==HIGH &&digitalRead(BUT1)==HIGH && modestatus == 0 ){  // BOth buttons pressed change alarm status
     // we check if alarm is on if so we remove it, it not, we activate it.
     // clock1.turnOnAlarm(1);
 
