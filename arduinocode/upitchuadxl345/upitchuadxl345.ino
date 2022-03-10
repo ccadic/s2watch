@@ -1335,7 +1335,7 @@ void loop() {
 
 
    // update time hours
-   if (digitalRead(BUT2)==HIGH && modestatus == 1 ){  // S2 button pressed change mode status
+   if (digitalRead(BUT2)==HIGH && digitalRead(BUT1)==LOW && modestatus == 1 ){  // S2 button pressed change mode status
     // we add hour +1 and refresh the display blue
      hour = hour +1;
       if (hour > 23){ hour = 0;
@@ -1348,7 +1348,7 @@ void loop() {
 
 
    // update time minutes
-   if (digitalRead(BUT1)==HIGH && modestatus == 1 ){  // S2 button pressed change mode status
+   if (digitalRead(BUT1)==HIGH && digitalRead(BUT2)==LOW && modestatus == 1 ){  // S2 button pressed change mode status
     // we add hour +1 and refresh the display blue
      minute = minute +1;
      if (minute > 59){ minute = 0;
